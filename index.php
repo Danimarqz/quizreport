@@ -19,12 +19,14 @@ if (optional_param('generate', false, PARAM_BOOL)) {
     $output = shell_exec($cmd);
 
     if (file_exists($exportpath)) {
-        echo $OUTPUT->notification('Informe generado correctamente.', 'notifysuccess');
-    } else {
-    echo $OUTPUT->notification('Error generando el informe:<br>' . s($output), 'notifyproblem');
+
+        if (file_exists($exportpath)) {
+            echo $OUTPUT->notification('Informe generado correctamente.', 'notifysuccess');
+        } else {
+        echo $OUTPUT->notification('Error generando el informe:<br>' . s($output), 'notifyproblem');
+        }
     }
 }
-
 echo html_writer::start_tag('div', ['class'=>'buttons']);
 echo html_writer::tag('a', 'Generar y descargar informe',
     [
