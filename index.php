@@ -15,7 +15,7 @@ echo $OUTPUT->header();
 
 // Si el formulario se ha enviado, ejecutamos el script y mostramos mensaje.
 if (optional_param('generate', false, PARAM_BOOL)) {
-    $cmd = '/opt/quizreport-venv/bin/python ' . escapeshellarg($CFG->dataroot . '/exports/genera_informe.py') . ' 2>&1';
+    $cmd = '/opt/quizreport-venv/bin/python ' . escapeshellarg($CFG->dataroot . '/exports/main.py') . ' 2>&1';
     $output = shell_exec($cmd);
 
     if (file_exists($exportpath)) {
