@@ -28,7 +28,7 @@ if (optional_param('generate', false, PARAM_BOOL)) {
     }
 }
 echo html_writer::start_tag('div', ['class'=>'buttons']);
-echo html_writer::tag('a', 'Generar y descargar informe',
+echo html_writer::tag('a', 'Generar nuevo informe',
     [
         'href' => new moodle_url('/local/quizreport/index.php', ['generate'=>1]),
         'class'=> 'btn btn-primary'
@@ -50,7 +50,7 @@ if (file_exists($exportpath)) {
     $mes = $meses[(int)date('n', $timestamp)];
     $hora = date('H:i', $timestamp);
     // Obtener fecha y hora de modificación del archivo
-    $downloadurl = new moodle_url('/exports/informe_quizzes.xlsx');
+    $downloadurl = new moodle_url('/local/quizreport/download.php', ['file' => $exportpath]);
     echo html_writer::tag('p',
         html_writer::link($downloadurl, 'Descargar informe de quizzes. Generado el ' . $dia . ' de ' . $mes . ' a las ' . $hora)
     );
